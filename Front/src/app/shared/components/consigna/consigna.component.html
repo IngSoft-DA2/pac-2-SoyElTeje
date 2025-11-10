@@ -1,0 +1,73 @@
+<div class="container my-4">
+  <header class="mb-4">
+    <h1 class="display-6 fw-semibold">Consigna — Ejercicio Reflection</h1>
+  </header>
+
+  <section class="mb-4">
+    <h2 class="h4">Objetivo</h2>
+    <p class="lead">
+      Aplicando las <strong>buenas prácticas</strong> vistas en el curso,
+      implementar una funcionalidad que permita listar, desde el Front, 
+      los <strong>nombres de las DLL</strong> que contienen al menos un tipo 
+      <strong>público y concreto</strong> que implemente 
+      <code>ImporterInterface</code>.
+    </p>
+  </section>
+
+  <section class="mb-4">
+    <h2 class="h4">Backend (.NET)</h2>
+    <ol class="list-group list-group-numbered">
+      <li class="list-group-item">
+        Implementar el endpoint <span class="badge text-bg-secondary">GET</span>
+        <code>/api/reflection/importers</code>.
+      </li>
+      <li class="list-group-item">
+        El endpoint debe escanear las DLL dentro del directorio <code>reflection</code>.
+      </li>
+      <li class="list-group-item">
+        Por cada ensamblado cargable, verificar si contiene al menos un tipo 
+        público y no abstracto que implemente <code>ImporterInterface</code>.
+      </li>
+      <li class="list-group-item">
+        Devolver <span class="badge text-bg-success">HTTP 200</span> con un arreglo de strings 
+        (<code>string[]</code>) que contenga los nombres de las DLL encontradas.
+      </li>
+      <li class="list-group-item">
+        Si no se encuentra ninguna DLL, devolver 
+        <span class="badge text-bg-success">HTTP 200</span> con una lista vacía.
+      </li>
+    </ol>
+  </section>
+
+  <section class="mb-4">
+    <h2 class="h4">Frontend (Angular)</h2>
+    <ol class="list-group list-group-numbered">
+      <li class="list-group-item">
+        Agregar una ruta nueva <code>/reflection</code>.
+      </li>
+      <li class="list-group-item">
+        Agregar en el navbar un ítem que navegue a esa ruta.
+      </li>
+      <li class="list-group-item">
+        Cada vez que se accede a la ruta <code>/reflection</code>, 
+        incrementar un <strong>contador en memoria</strong>.
+      </li>
+      <li class="list-group-item">
+        Configurar una <em>guarda (guard)</em> asociada a la ruta 
+        <code>/reflection</code> que verifique el valor del contador:
+        <ul class="mt-2 mb-0">
+          <li>Si el contador es <strong>mayor a 20</strong>, el acceso a la ruta debe bloquearse.</li>
+        </ul>
+      </li>
+      <li class="list-group-item">
+        En la página <code>/reflection</code>, incluir un botón que invoque el endpoint del backend.
+      </li>
+      <li class="list-group-item">
+        Mostrar los nombres devueltos por el endpoint en una lista.
+      </li>
+      <li class="list-group-item">
+        Mostrar los estados de <strong>carga</strong>, <strong>vacío</strong> y <strong>error</strong>.
+      </li>
+    </ol>
+  </section>
+</div>
