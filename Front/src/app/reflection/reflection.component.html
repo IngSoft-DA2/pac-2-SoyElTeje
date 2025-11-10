@@ -1,0 +1,57 @@
+<div class="container my-4">
+  <header class="mb-4">
+    <h1 class="display-5 fw-semibold">Reflection - Importadores</h1>
+    <p class="lead">Lista de DLLs que contienen tipos que implementan ImporterInterface</p>
+  </header>
+
+  <div class="mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Contador de Accesos</h5>
+        <p class="card-text">
+          <span class="badge bg-primary fs-6">Accesos: {{ accessCounter }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <button 
+      class="btn btn-primary btn-lg" 
+      (click)="loadImporters()" 
+      [disabled]="isLoading">
+      <span *ngIf="!isLoading">Cargar Importadores</span>
+      <span *ngIf="isLoading">
+        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+        Cargando...
+      </span>
+    </button>
+  </div>
+
+  <div *ngIf="isLoading" class="alert alert-info">
+    <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+    Cargando importadores...
+  </div>
+
+  <div *ngIf="error && !isLoading" class="alert alert-danger" role="alert">
+    <strong>Error:</strong> {{ error }}
+  </div>
+
+  <div *ngIf="isEmpty && !isLoading && !error" class="alert alert-warning" role="alert">
+    <strong>No se encontraron DLLs.</strong> No hay archivos DLL en el directorio reflection que contengan tipos que implementen ImporterInterface.
+  </div>
+
+  <div *ngIf="dllNames.length > 0 && !isLoading" class="mt-4">
+    <h3 class="h5 mb-3">DLLs encontradas ({{ dllNames.length }}):</h3>
+    <ul class="list-group">
+      <li *ngFor="let dllName of dllNames" class="list-group-item">
+        <strong>{{ dllName }}</strong>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="!isLoading && !error && !isEmpty && dllNames.length === 0" class="alert alert-secondary">
+    Haz clic en el botón "Cargar Importadores" para escanear las DLLs en el directorio reflection.
+  </div>
+</div>
+

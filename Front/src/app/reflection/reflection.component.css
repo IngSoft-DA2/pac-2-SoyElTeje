@@ -1,0 +1,12 @@
+.container {
+  max-width: 800px;
+}
+
+.list-group-item {
+  font-family: 'Courier New', monospace;
+}
+
+.btn {
+  min-width: 200px;
+}
+
